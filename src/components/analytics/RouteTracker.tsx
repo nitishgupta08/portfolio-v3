@@ -1,8 +1,15 @@
-'use client';
+"use client";
 
-import { useRouteTracking } from '@/hooks/useAnalytics';
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { ga_tracker } from "@/lib/analytics";
 
 export default function RouteTracker() {
-  useRouteTracking();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    ga_tracker.trackPageView(pathname, document.title);
+  }, [pathname]);
+
   return null;
 }

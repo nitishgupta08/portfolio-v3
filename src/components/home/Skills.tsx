@@ -5,35 +5,48 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
-// Skills data
+// Updated skills data
 const skillsData = {
-  languages: [
+  technical: [
+    // Languages
     "C",
     "C++",
     "Python",
     "Javascript",
+    "TypeScript",
     "HTML",
     "CSS",
     "SQL",
-    "Bash",
-    "TypeScript",
-    "Java",
-  ],
-  tech: [
+
+    // Databases
+    "MongoDB",
+    "Redis",
+
+    // Frameworks & Libraries
     "Django",
     "DRF",
     "ReactJS",
     "NodeJS",
-    "Redis",
+    "PyQt",
+
+    // IoT & Hardware
+    "Arduino",
+    "MQTT",
+
+    // Communication & Real-time
     "Socket.io",
-    "Express",
-    "MUI",
-    "TailwindCSS",
-    "React Router",
-    "Redux",
+    "WebSockets",
+    "RESTful APIs",
+
+    // Tools & Platforms
+    "Git & Github",
+    "Postman",
+    "Apache",
+    "Docker",
+    "Linux/Unix",
   ],
-  tools: ["Git & Github", "Postman", "MongoDB", "Vite", "Apache"],
-  dsa: [
+  platforms: [
+    { name: "GitHub", link: "https://github.com/nitishgupta08" },
     { name: "Leetcode", link: "https://leetcode.com/nitishgupta24/" },
     { name: "Codeforces", link: "https://codeforces.com/profile/ghost8_" },
   ],
@@ -58,19 +71,19 @@ export default function Skills() {
             </CardHeader>
 
             <CardContent className="px-6 pb-12 md:px-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold uppercase tracking-wide">
-                    Languages
+                    Tech Stack
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {skillsData.languages.map((language, index) => (
+                    {skillsData.technical.map((skill, index) => (
                       <Badge
                         key={index}
                         variant="secondary"
                         className="hover:bg-primary hover:text-primary-foreground transition-colors"
                       >
-                        {language}
+                        {skill}
                       </Badge>
                     ))}
                   </div>
@@ -78,44 +91,10 @@ export default function Skills() {
 
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold uppercase tracking-wide">
-                    Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skillsData.tech.map((technology, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="hover:bg-primary hover:text-primary-foreground transition-colors"
-                      >
-                        {technology}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold uppercase tracking-wide">
-                    Tools
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skillsData.tools.map((tool, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="hover:bg-primary hover:text-primary-foreground transition-colors"
-                      >
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold uppercase tracking-wide">
-                    Coding Platforms
+                    Platforms
                   </h3>
                   <div className="space-y-3">
-                    {skillsData.dsa.map((platform, index) => (
+                    {skillsData.platforms.map((platform, index) => (
                       <Button
                         key={index}
                         variant="outline"

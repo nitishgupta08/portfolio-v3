@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { 
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -12,17 +12,31 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { FaExternalLinkAlt, FaGithub, FaArrowRight } from "react-icons/fa";
+import { AlertCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useFeaturedProjects } from "@/hooks/useProjects";
+import { useProjects } from "@/hooks/useProjects";
 import type { Project } from "@/types/Project";
-import { allProjectsData } from "@/lib/data/projectData";
-import { portfolioTracking } from '@/lib/analytics';
+import { ga_tracker } from "@/lib/analytics";
+import { useEffect } from "react";
 
 export default function Projects() {
-  const { data: featuredProjects, isLoading, error, isFetching } = useFeaturedProjects();
+  const {
+    data: featuredProjects,
+    isLoading,
+    error,
+    isFetching,
+  } = useProjects();
 
-  const displayProjects = featuredProjects || allProjectsData.filter(p => p.isFeatured && p.isVisible);
+  // Track errors when they occur
+  useEffect(() => {
+    if (error) {
+      ga_tracker.trackError(error, "Error while fetching projects data!");
+    }
+  }, [error]);
+
+  const displayProjects =
+    featuredProjects?.filter((project) => project.isFeatured) || [];
 
   return (
     <section className="w-full">
@@ -30,7 +44,10 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto">
           <Card className="border-0 shadow-none bg-transparent">
             <CardHeader className="pb-8 text-center">
-              <Badge variant="outline" className="mb-4 uppercase tracking-wider mx-auto">
+              <Badge
+                variant="outline"
+                className="mb-4 uppercase tracking-wider mx-auto"
+              >
                 Featured Projects
                 {isFetching && !isLoading && (
                   <span className="ml-1 text-xs opacity-60">(updating...)</span>
@@ -48,7 +65,10 @@ export default function Projects() {
                   <Carousel className="w-full">
                     <CarouselContent>
                       {[1, 2, 3].map((i) => (
-                        <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/2">
+                        <CarouselItem
+                          key={i}
+                          className="md:basis-1/2 lg:basis-1/2"
+                        >
                           <div className="p-2">
                             <Card className="h-full border border-gray-200 dark:border-gray-700 bg-card">
                               <div className="relative">
@@ -89,14 +109,39 @@ export default function Projects() {
               )}
 
               {/* Error State */}
-              {error && !displayProjects.length && !isLoading && (
-                <div className="text-center py-12">
-                  <p className="text-destructive">Error loading projects. Please try again later.</p>
+              {error && !isLoading && (
+                <div className="flex flex-col items-center justify-center py-16 px-6">
+                  <div className="relative mb-6">
+                    <div className="w-24 h-24 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/30 rounded-full flex items-center justify-center border border-red-200 dark:border-red-800/50">
+                      <AlertCircle className="w-12 h-12 text-red-500 dark:text-red-400" />
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full animate-pulse"></div>
+                  </div>
+
+                  <div className="text-center space-y-4 max-w-md">
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                      Oops! Something went wrong
+                    </h3>
+
+                    <p className="text-muted-foreground leading-relaxed">
+                      Unable to load my projects right now. This has been
+                      automatically reported and I'll look into it.
+                    </p>
+
+                    <div className="mt-8 text-center">
+                      <button
+                        onClick={() => window.location.reload()}
+                        className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
+                      >
+                        Try Again
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {/* Projects Carousel */}
-              {!isLoading && displayProjects.length > 0 && (
+              {!isLoading && !error && displayProjects.length > 0 && (
                 <>
                   <Carousel
                     opts={{
@@ -107,7 +152,10 @@ export default function Projects() {
                   >
                     <CarouselContent>
                       {displayProjects.map((project) => (
-                        <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/2">
+                        <CarouselItem
+                          key={project.id}
+                          className="md:basis-1/2 lg:basis-1/2"
+                        >
                           <div className="p-2">
                             <ProjectCard project={project} />
                           </div>
@@ -119,8 +167,8 @@ export default function Projects() {
                   </Carousel>
 
                   <div className="mt-12 text-center">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="lg"
                       className="group hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                       asChild
@@ -132,6 +180,21 @@ export default function Projects() {
                     </Button>
                   </div>
                 </>
+              )}
+
+              {/* No Data State (when successfully loaded but no projects) */}
+              {!isLoading && !error && displayProjects.length === 0 && (
+                <div className="text-center py-16">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                    <AlertCircle className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    No projects to show
+                  </h3>
+                  <p className="text-muted-foreground">
+                    There are currently no featured projects to display.
+                  </p>
+                </div>
               )}
             </CardContent>
           </Card>
@@ -145,12 +208,12 @@ export default function Projects() {
 function ProjectCard({ project }: { project: Project }) {
   const handleLiveDemoClick = () => {
     if (project.liveLink) {
-      portfolioTracking.trackExternalLink(project.liveLink, 'live_demo');
+      ga_tracker.trackExternalLink(project.liveLink, "live_demo");
     }
   };
 
   const handleGithubClick = () => {
-    portfolioTracking.trackExternalLink(project.githubLink, 'github');
+    ga_tracker.trackExternalLink(project.githubLink, "github");
   };
 
   return (
@@ -167,13 +230,11 @@ function ProjectCard({ project }: { project: Project }) {
             />
           </div>
         )}
-        
+
         <CardContent className="p-6">
           <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-bold mb-2">
-                {project.title}
-              </h3>
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
               <Badge variant="secondary" className="text-xs">
                 {project.date}
               </Badge>
@@ -185,11 +246,7 @@ function ProjectCard({ project }: { project: Project }) {
 
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag: string, index: number) => (
-                <Badge 
-                  key={index} 
-                  variant="outline"
-                  className="text-xs"
-                >
+                <Badge key={index} variant="outline" className="text-xs">
                   {tag}
                 </Badge>
               ))}
@@ -215,11 +272,7 @@ function ProjectCard({ project }: { project: Project }) {
               </Button>
 
               {project.liveLink && (
-                <Button
-                  size="sm"
-                  asChild
-                  className="flex-1"
-                >
+                <Button size="sm" asChild className="flex-1">
                   <a
                     href={project.liveLink}
                     target="_blank"

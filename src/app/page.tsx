@@ -5,7 +5,6 @@ import Experience from "@/components/home/Experience";
 import Projects from "@/components/home/Projects";
 import Contact from "@/components/home/Contact";
 
-
 export default function Home() {
   return (
     <div>

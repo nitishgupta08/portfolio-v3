@@ -1,51 +1,39 @@
-import { collection, getDocs, orderBy, query, where, onSnapshot } from 'firebase/firestore';
-import { db } from '@/lib/firebase/firebase';
-import type { Experience } from '@/types/Experience';
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/lib/firebase/firebase";
+import type { Experience } from "@/types/Experience";
+import { fallbackExperienceData } from "@/lib/data/experienceData";
 
-const COLLECTION_NAME = 'experiences';
+const COLLECTION_NAME = "experiences";
 
 export class ExperienceService {
   static async getAllExperiences(): Promise<Experience[]> {
-    
-    if (process.env.NEXT_PUBLIC_USE_FALLBACK_DATA === 'true') {
-      throw new Error('Using fallback data for testing');
+    // If using fallback data for development/testing
+    if (process.env.NEXT_PUBLIC_USE_FALLBACK_DATA === "true") {
+      console.log("Using fallback experience data for testing");
+      return fallbackExperienceData;
     }
-    
+
     try {
       const q = query(
         collection(db, COLLECTION_NAME),
-        where('isVisible', '==', true),
+        where("isVisible", "==", true)
       );
+
       const querySnapshot = await getDocs(q);
-      
+
       const experiences: Experience[] = [];
+
       querySnapshot.forEach((doc) => {
         experiences.push({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         } as Experience);
       });
-      
+
       return experiences;
     } catch (error) {
-      console.error('Error fetching experiences:', error);
-      throw new Error('Failed to fetch experiences');
+      console.error("Error fetching experiences:", error);
+      throw new Error("Failed to fetch experiences");
     }
-  }
-
-  static setupRealTimeListener(onDataChange: () => void) {
-    const q = query(
-      collection(db, COLLECTION_NAME),
-      where('isVisible', '==', true)
-    );
-    
-    return onSnapshot(q, (snapshot) => {
-      if (!snapshot.empty && !snapshot.metadata.fromCache) {
-        console.log('Experience data changed, invalidating cache');
-        onDataChange();
-      }
-    }, (error) => {
-      console.error('Real-time listener error:', error);
-    });
   }
 }

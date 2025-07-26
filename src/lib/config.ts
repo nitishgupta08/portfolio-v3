@@ -1,25 +1,25 @@
 export const SITE_CONFIG = {
-  version: "3.0.0",
-  name: "Nitish Gupta Portfolio",
-  description: "Software engineer who loves creating beautiful code to power beautiful designs",
-  author: "Nitish Gupta",
-  url: "https://nitishgupta.dev", // Update with your domain
+  version: process.env.APP_VERSION,
+  name: "Nitish Kumar Gupta -- Portfolio",
+  description: "SWE",
+  author: "Nitish Kumar Gupta",
+  url: "https://nitishgupta.dev",
   github: {
     username: "nitishgupta08",
-    repo: "portfolio-v3", // Update with your repo name
+    repo: "portfolio-v3",
   },
   previousVersions: [
     {
       version: "2.0.0",
       url: "https://nitishgupta.netlify.app/",
-      label: "v2"
+      label: "v2",
     },
     {
-      version: "1.0.0", 
+      version: "1.0.0",
       url: "https://v1-nitishgupta.netlify.app/",
-      label: "v1"
-    }
-  ]
+      label: "v1",
+    },
+  ],
 } as const;
 
 // Helper function to get GitHub release URL

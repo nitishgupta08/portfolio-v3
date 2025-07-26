@@ -11,7 +11,6 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 w-full z-50 border-b bg-background/90 backdrop-blur">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-
         <Link
           href="/"
           className="flex items-center hover:opacity-80 transition-opacity"
@@ -27,7 +26,9 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-2">
-          <Link
+          {/* TODO: Add them when they are ready */}
+
+          {/* <Link
             href="/blog"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
@@ -49,7 +50,7 @@ export default function Navbar() {
           >
             <FaCamera className="mr-2 h-4 w-4" />
             <span className="hidden sm:inline">Gallery</span>
-          </Link>
+          </Link> */}
 
           <ThemeToggle />
         </nav>

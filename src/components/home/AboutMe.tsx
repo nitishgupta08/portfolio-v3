@@ -24,21 +24,17 @@ export default function AboutMe() {
 
             <CardContent className="px-8 pb-12 md:px-12 space-y-8">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                I am a hardworking college student, driven by a deep sense of
-                motivation and armed with an impressive array of powerful
-                skills. I bring to the table a commitment to utilize my
-                abilities in order to contribute to and advance the mission of
-                any organization I am a part of. My goal is to develop
-                applications that are, behind the scenes, both scalable and
-                efficient, while at the same time offering users experiences
-                that are pixel-perfect and engaging.
+                I am a software engineer with about two years of experience,
+                focused on building scalable and efficient applications. I enjoy
+                creating solutions that combine strong technical foundations
+                with user-friendly designs.
               </p>
 
               <Separator />
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                When I'm not working, I like to explore new places, relax by
-                watching films, and whip up delicious meals for my loved ones.
+                Outside of work, I like to explore new places, watch films, and
+                cook meals for family and friends.
               </p>
             </CardContent>
           </Card>

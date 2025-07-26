@@ -4,15 +4,16 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import RouteTracker from "@/components/analytics/RouteTracker";
 import "@/styles/global.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nitish Gupta - Portfolio",
-  description: "Software engineer who loves creating beautiful code",
+  title: "Nitish Kumar Gupta",
+  description: "SWE",
 };
 
 export default function RootLayout({
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <GoogleAnalytics />
+        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
         <QueryProvider>
           <ThemeProvider
             attribute="class"
@@ -33,9 +34,7 @@ export default function RootLayout({
           >
             <RouteTracker />
             <Navbar />
-            <main className="pt-16">
-              {children}
-            </main>
+            <main className="pt-16">{children}</main>
             <Footer />
           </ThemeProvider>
         </QueryProvider>

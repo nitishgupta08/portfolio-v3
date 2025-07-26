@@ -1,16 +1,11 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FaEnvelope } from "react-icons/fa";
-import { portfolioTracking } from "@/lib/analytics";
 
 export default function Contact() {
-  const handleEmailClick = () => {
-    portfolioTracking.trackContactInteraction("email_click");
-  };
-
   return (
     <section className="w-full">
       <div className="container mx-auto px-4 my-8">
@@ -44,7 +39,6 @@ export default function Contact() {
                     <a
                       href="mailto:nitishkg.88@gmail.com"
                       aria-label="Send email"
-                      onClick={handleEmailClick}
                     >
                       <FaEnvelope className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
                       <span>Say Hello</span>

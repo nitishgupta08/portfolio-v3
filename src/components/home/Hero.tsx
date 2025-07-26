@@ -28,7 +28,9 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          {/* Add them when they are ready */}
+
+          {/* <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button
               asChild
               variant="outline"
@@ -41,7 +43,7 @@ export default function Hero() {
             <Button asChild size="lg" className="min-w-[140px]">
               <Link href="/gallery">View Gallery</Link>
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

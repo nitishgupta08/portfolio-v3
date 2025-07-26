@@ -4,14 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { portfolioTracking } from "@/lib/analytics";
+import { ga_tracker } from "@/lib/analytics";
 import { SITE_CONFIG, getGitHubReleaseUrl } from "@/lib/config";
 
 export default function Footer() {
-  const handleVersionClick = (url: string, version: string) => {
-    portfolioTracking.trackExternalLink(url, "other");
-  };
-
   return (
     <footer className="w-full border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 py-8 lg:px-8">
@@ -25,9 +21,10 @@ export default function Footer() {
                   variant="default"
                   className="cursor-pointer hover:bg-primary/90 transition-colors"
                   onClick={() => {
-                    const releaseUrl = getGitHubReleaseUrl(SITE_CONFIG.version);
+                    const releaseUrl = getGitHubReleaseUrl(
+                      SITE_CONFIG.version || "latest"
+                    );
                     window.open(releaseUrl, "_blank", "noopener,noreferrer");
-                    handleVersionClick(releaseUrl, SITE_CONFIG.version);
                   }}
                 >
                   v{SITE_CONFIG.version}
@@ -40,7 +37,6 @@ export default function Footer() {
                     className="cursor-pointer hover:bg-muted transition-colors"
                     onClick={() => {
                       window.open(version.url, "_blank", "noopener,noreferrer");
-                      handleVersionClick(version.url, version.version);
                     }}
                   >
                     {version.label}
@@ -89,7 +85,7 @@ function Socials() {
   ];
 
   const handleSocialClick = (url: string, platform: string) => {
-    portfolioTracking.trackExternalLink(url, "social");
+    ga_tracker.trackExternalLink(url, "social");
   };
 
   return (
