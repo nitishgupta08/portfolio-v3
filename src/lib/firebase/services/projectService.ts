@@ -15,8 +15,7 @@ export class ProjectService {
     try {
       const q = query(
         collection(db, COLLECTION_NAME),
-        where("isVisible", "==", true),
-        orderBy("order", "asc")
+        where("isVisible", "==", true)
       );
       const querySnapshot = await getDocs(q);
 
