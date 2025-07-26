@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import RouteTracker from "@/components/analytics/RouteTracker";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/global.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
         {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
         <QueryProvider>
@@ -38,6 +39,7 @@ export default function RootLayout({
             <Footer />
           </ThemeProvider>
         </QueryProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
