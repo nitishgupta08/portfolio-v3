@@ -25,8 +25,9 @@ export default function Contact() {
                 <div className="max-w-2xl mx-auto">
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                     Whether you have an idea for a project, want to collaborate,
-                    or just want to say hi, feel free to reach out! I'm always
-                    excited to connect with fellow developers and creators.
+                    or just want to say hi, feel free to reach out! I&rsquo;m
+                    always excited to connect with fellow developers and
+                    creators.
                   </p>
                 </div>
 

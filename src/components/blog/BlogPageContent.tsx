@@ -15,25 +15,6 @@ import EmptyBlogState from "./EmptyBlogState";
 
 const POSTS_PER_PAGE = 6;
 
-// Error tracking utility
-const trackError = (error: any, context: string) => {
-  // For Google Analytics 4
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "exception", {
-      description: `${context}: ${error?.message || "Unknown error"}`,
-      fatal: false,
-      custom_map: {
-        custom_parameter_1: context,
-        custom_parameter_2: error?.name || "Error",
-        custom_parameter_3: error?.stack?.substring(0, 100) || "No stack trace",
-      },
-    });
-  }
-
-  // Also log to console for debugging
-  console.error(`[${context}]`, error);
-};
-
 interface BlogPageContentProps {
   initialPage: number;
 }
@@ -45,13 +26,6 @@ export function BlogPageContent({ initialPage }: BlogPageContentProps) {
     error,
     isFetching,
   } = usePaginatedBlogPosts(initialPage, POSTS_PER_PAGE);
-
-  // Track errors when they occur
-  useEffect(() => {
-    if (error) {
-      trackError(error, "Blog Posts Data Fetch");
-    }
-  }, [error]);
 
   return (
     <div className="min-h-screen pt-24 pb-12">

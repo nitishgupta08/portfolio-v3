@@ -1,6 +1,5 @@
 "use client";
 
-import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -63,8 +62,8 @@ export default function ProjectsPage() {
                 Complete Project Collection
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A comprehensive showcase of all the projects I've built, from
-                featured works to experimental implementations
+                A comprehensive showcase of all the projects I&rsquo;ve built,
+                from featured works to experimental implementations
               </p>
             </div>
           </div>
@@ -111,7 +110,7 @@ export default function ProjectsPage() {
 
                 <p className="text-muted-foreground leading-relaxed">
                   Unable to load my projects right now. This has been
-                  automatically reported and I'll look into it.
+                  automatically reported and I&rsquo;ll look into it.
                 </p>
 
                 <div className="mt-8 text-center">

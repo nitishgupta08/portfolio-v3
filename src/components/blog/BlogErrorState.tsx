@@ -18,7 +18,7 @@ export function BlogErrorState() {
 
         <p className="text-muted-foreground leading-relaxed">
           Unable to load blog posts right now. This has been automatically
-          reported and I'll look into it.
+          reported and I&rsquo;ll look into it.
         </p>
 
         <div className="mt-8 text-center">

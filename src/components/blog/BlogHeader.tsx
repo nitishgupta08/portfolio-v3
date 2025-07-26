@@ -12,8 +12,6 @@ interface BlogHeaderProps {
 
 export function BlogHeader({
   totalPosts,
-  currentPage,
-  totalPages,
   isFetching,
   isLoading,
 }: BlogHeaderProps) {

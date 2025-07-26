@@ -22,21 +22,20 @@ export default function BlogNotFound() {
             <Badge variant="outline" className="mx-auto">
               📝 Blog Post Not Found
             </Badge>
-            
+
             <div className="space-y-4">
               <h1 className="text-4xl font-bold">
-                This blog post doesn't exist
+                This blog post doesn&rsquo;t exist
               </h1>
               <p className="text-muted-foreground">
-                The blog post you're looking for might have been moved, deleted, or never existed.
+                The blog post you&rsquo;re looking for might have been moved,
+                deleted, or never existed.
               </p>
             </div>
 
             <div className="flex gap-4 justify-center pt-4">
               <Button asChild>
-                <Link href="/blog">
-                  All Blog Posts
-                </Link>
+                <Link href="/blog">All Blog Posts</Link>
               </Button>
               <Button variant="outline" asChild>
                 <Link href="/">

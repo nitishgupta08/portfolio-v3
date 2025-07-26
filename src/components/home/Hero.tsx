@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+// import Link from "next/link";
+// import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl leading-relaxed">
-              I'm{" "}
+              I&rsquo;m{" "}
               <span className="text-primary font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 Nitish Kumar Gupta
               </span>

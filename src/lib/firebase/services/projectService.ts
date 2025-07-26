@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebase";
 import type { Project } from "@/types/Project";
 import { fallbackProjectsData } from "@/lib/data/projectData";

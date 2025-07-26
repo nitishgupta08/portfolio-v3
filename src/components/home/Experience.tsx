@@ -120,7 +120,7 @@ export default function Experience() {
 
                     <p className="text-muted-foreground leading-relaxed">
                       Unable to load experience data right now. This has been
-                      automatically reported and I'll look into it.
+                      automatically reported and I&rsquo;ll look into it.
                     </p>
 
                     <div className="mt-8 text-center">
@@ -141,7 +141,7 @@ export default function Experience() {
                   {/* Mobile Vertical Timeline */}
                   <div className="block md:hidden">
                     <div className="space-y-6">
-                      {displayExperiences.map((item, index) => (
+                      {displayExperiences.map((item) => (
                         <div key={item.id} className="relative">
                           <Card className="border border-gray-50 dark:border-gray-700 bg-card/50 hover:bg-card/80 transition-colors">
                             <CardContent className="space-y-3">

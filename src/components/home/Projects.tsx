@@ -54,7 +54,7 @@ export default function Projects() {
                 )}
               </Badge>
               <CardTitle className="text-3xl md:text-4xl font-bold">
-                Things I've Built
+                Things I&rsquo;ve Built
               </CardTitle>
             </CardHeader>
 
@@ -125,7 +125,7 @@ export default function Projects() {
 
                     <p className="text-muted-foreground leading-relaxed">
                       Unable to load my projects right now. This has been
-                      automatically reported and I'll look into it.
+                      automatically reported and I&rsquo;ll look into it.
                     </p>
 
                     <div className="mt-8 text-center">

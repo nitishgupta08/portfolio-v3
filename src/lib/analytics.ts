@@ -1,12 +1,16 @@
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
+import { type UseQueryResult } from "@tanstack/react-query";
+
+type QueryError = UseQueryResult["error"];
+
 // Track custom events
 export const trackEvent = (
   action: string,
   category: string,
   label?: string,
   value?: number,
-  customParameters?: Record<string, any>
+  customParameters?: Record<string, string | number | boolean | undefined>
 ) => {
   if (!GA_MEASUREMENT_ID || typeof window === "undefined") return;
 
@@ -43,7 +47,7 @@ export const ga_tracker = {
   // Track error
 
   // Google Analytics error tracking utility
-  trackError: (error: any, context: string) => {
+  trackError: (error: QueryError, context: string) => {
     if (!GA_MEASUREMENT_ID || typeof window === "undefined") return;
 
     window.gtag("event", "exception", {

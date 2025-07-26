@@ -9,7 +9,6 @@ import {
   getDocs,
   increment,
   limit,
-  onSnapshot,
   query,
   startAfter,
   updateDoc,
@@ -28,7 +27,15 @@ export class BlogService {
     try {
       if (process.env.NEXT_PUBLIC_USE_FALLBACK_DATA === "true") {
         console.log("Using fallback data for blog posts");
-        return fallbackBlogData;
+        return {
+          posts: fallbackBlogData,
+          totalCount: 10,
+          hasNextPage: false,
+          hasPrevPage: false,
+          currentPage: 1,
+          totalPages: 1,
+          lastDoc: undefined,
+        };
       }
 
       // Build base query

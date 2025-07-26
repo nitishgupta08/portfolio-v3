@@ -82,7 +82,7 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                 {displayBlog.title}
               </h1>
-              
+
               <p className="text-xl text-muted-foreground leading-relaxed">
                 {displayBlog.description}
               </p>
@@ -102,13 +102,11 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
                   <FaClock className="h-4 w-4" />
                   <span>{formatDate(displayBlog.publishedAt)}</span>
                 </div>
-                
+
                 <Suspense fallback={<Skeleton className="h-4 w-20" />}>
-                  <ViewCounter 
-                    slug={displayBlog.slug} 
+                  <ViewCounter
+                    slug={displayBlog.slug}
                     initialViews={displayBlog.views}
-                    title={displayBlog.title}
-                    readTime={displayBlog.readTime}
                   />
                 </Suspense>
 
@@ -117,7 +115,7 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
                 )}
               </div>
             </div>
-            
+
             <Separator />
           </header>
 
@@ -139,7 +137,7 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
                   All Posts
                 </Link>
               </Button>
-              
+
               <div className="text-right">
                 <p className="text-sm text-muted-foreground">
                   Enjoyed this post? Share it with others!
@@ -155,10 +153,10 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
 
 // Helper function
 function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
 
