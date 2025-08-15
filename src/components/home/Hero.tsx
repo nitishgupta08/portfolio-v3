@@ -20,11 +20,12 @@ export default function Hero() {
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl leading-relaxed">
               I&rsquo;m{" "}
-              <span className="text-primary font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+              <span className="text-primary font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
                 Nitish Kumar Gupta
               </span>
-              , a software engineer who loves creating beautiful code to power
-              beautiful designs <span className="inline-block">🧑‍💻</span>
+              , a software engineer turning complex problems into simple,
+              elegant solutions that just work.{" "}
+              <span className="inline-block">🧑‍💻</span>
             </p>
           </div>
 

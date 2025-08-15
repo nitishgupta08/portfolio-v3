@@ -61,8 +61,7 @@ export default function ProjectsPage() {
                 Complete Project Collection
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A comprehensive showcase of all the projects I&rsquo;ve built,
-                from featured works to experimental implementations
+                A comprehensive showcase of all the projects I&rsquo;ve built.
               </p>
             </div>
           </div>

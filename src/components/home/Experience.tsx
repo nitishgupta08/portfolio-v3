@@ -38,7 +38,7 @@ export default function Experience() {
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="px-6 pb-12 md:px-12">
+            <CardContent className="px-0 pb-12 md:px-12">
               {/* Loading Skeleton */}
               {isLoading && (
                 <div className="relative">
@@ -155,10 +155,10 @@ export default function Experience() {
                                   </h4>
                                 </div>
 
-                                <div className="flex flex-col gap-1">
+                                <div className="flex flex-col gap-2">
                                   <Badge
                                     variant="secondary"
-                                    className="text-xs uppercase tracking-wide w-fit"
+                                    className="my-2 text-xs uppercase tracking-wide w-fit"
                                   >
                                     {item.from} - {item.to}
                                   </Badge>
@@ -169,7 +169,7 @@ export default function Experience() {
                                   )}
                                 </div>
 
-                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                <p className="my-2 text-sm text-muted-foreground leading-relaxed">
                                   {item.description}
                                 </p>
 

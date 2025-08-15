@@ -45,8 +45,7 @@ export default function Footer() {
               </div>
 
               <p className="text-xs text-muted-foreground text-center md:text-right">
-                Built with Next.js • Tailwind CSS • shadcn/ui • Firebase •
-                Perplexity AI
+                Built with Next.js • Tailwind CSS • shadcn/ui • Firebase
               </p>
             </div>
           </div>

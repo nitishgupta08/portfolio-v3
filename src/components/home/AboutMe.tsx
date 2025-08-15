@@ -24,17 +24,23 @@ export default function AboutMe() {
 
             <CardContent className="px-8 pb-12 md:px-12 space-y-8">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                I am a software engineer with about two years of experience,
-                focused on building scalable and efficient applications. I enjoy
-                creating solutions that combine strong technical foundations
-                with user-friendly designs.
+                I am a software engineer with two years of experience
+                specializing in backend development, primarily using C/C++ and
+                Django. I focus on building scalable, high-performance systems
+                with robust technical foundations. While my professional
+                expertise lies in backend technologies, I have also explored
+                frontend development through personal side projects, enabling me
+                to approach solutions with a holistic understanding of the
+                software stack.
               </p>
 
               <Separator />
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Outside of work, I like to explore new places, watch films, and
-                cook meals for family and friends.
+                When I&rsquo;m not with my laptop, I enjoy exploring new places,
+                enjoying great stories in theatres or in video games,
+                experimenting in the kitchen, and staying active with sports &
+                gym.
               </p>
             </CardContent>
           </Card>

@@ -13,8 +13,8 @@ import "@/styles/global.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nitish Kumar Gupta",
-  description: "SWE",
+  title: "Nitish Kumar Gupta | Portfolio",
+  description: "Personal portfolio website",
   icons: "/logo.svg",
 };
 

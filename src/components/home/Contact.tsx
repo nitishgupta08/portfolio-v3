@@ -49,17 +49,23 @@ export default function Contact() {
                 </div>
 
                 <div className="pt-8 border-t border-border/50">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                  <div className="grid grid-cols-3 gap-6 text-center">
                     <div className="space-y-2">
-                      <div className="text-2xl">💡</div>
+                      <div className="text-2xl">🧭</div>
                       <p className="text-sm text-muted-foreground">
-                        Open to opportunities
+                        Exploring new challenges
                       </p>
                     </div>
                     <div className="space-y-2">
                       <div className="text-2xl">🚀</div>
                       <p className="text-sm text-muted-foreground">
                         Ready to collaborate
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-2xl">🚗</div>
+                      <p className="text-sm text-muted-foreground">
+                        Ready for the next adventure
                       </p>
                     </div>
                   </div>
