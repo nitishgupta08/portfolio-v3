@@ -3,7 +3,6 @@ export const SITE_CONFIG = {
   name: "Nitish Kumar Gupta -- Portfolio",
   description: "SWE",
   author: "Nitish Kumar Gupta",
-  url: "https://nitishgupta.dev",
   github: {
     username: "nitishgupta08",
     repo: "portfolio-v3",
@@ -24,5 +23,5 @@ export const SITE_CONFIG = {
 
 // Helper function to get GitHub release URL
 export const getGitHubReleaseUrl = (version: string) => {
-  return `https://github.com/${SITE_CONFIG.github.username}/${SITE_CONFIG.github.repo}/releases/tag/v${version}`;
+  return `https://github.com/${SITE_CONFIG.github.username}/${SITE_CONFIG.github.repo}/releases/tag/${version}`;
 };
