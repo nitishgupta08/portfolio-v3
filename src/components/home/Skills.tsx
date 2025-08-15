@@ -48,7 +48,7 @@ const skillsData = {
   platforms: [
     { name: "GitHub", link: "https://github.com/nitishgupta08" },
     { name: "Leetcode", link: "https://leetcode.com/nitishgupta24/" },
-    { name: "Codeforces", link: "https://codeforces.com/profile/ghost8_" },
+    // { name: "Codeforces", link: "https://codeforces.com/profile/ghost8_" },
   ],
 };
 
