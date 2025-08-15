@@ -100,7 +100,7 @@ export default function Skills() {
                         variant="outline"
                         size="sm"
                         asChild
-                        className="w-full justify-between hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                        className="w-full justify-between hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
                       >
                         <a
                           href={platform.link}

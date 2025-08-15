@@ -255,7 +255,7 @@ function ProjectCard({ project }: { project: Project }) {
                 variant="outline"
                 size="sm"
                 asChild
-                className="flex-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="flex-1 hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <a
                   href={project.githubLink}

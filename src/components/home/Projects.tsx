@@ -170,7 +170,7 @@ export default function Projects() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="group hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                      className="group hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                       asChild
                     >
                       <Link href="/projects">
@@ -257,7 +257,7 @@ function ProjectCard({ project }: { project: Project }) {
                 variant="outline"
                 size="sm"
                 asChild
-                className="flex-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="flex-1 hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <a
                   href={project.githubLink}
