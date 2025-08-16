@@ -83,7 +83,7 @@ function Socials() {
     },
   ];
 
-  const handleSocialClick = (url: string, platform: string) => {
+  const handleSocialClick = (url: string) => {
     ga_tracker.trackExternalLink(url, "social");
   };
 
@@ -105,7 +105,7 @@ function Socials() {
               rel="noopener noreferrer"
               aria-label={social.name}
               title={social.name}
-              onClick={() => handleSocialClick(social.url, social.name)}
+              onClick={() => handleSocialClick(social.url)}
             >
               <IconComponent className="h-5 w-5" />
             </a>

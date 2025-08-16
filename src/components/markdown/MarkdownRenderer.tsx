@@ -9,6 +9,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // import a highlight.js theme globally in your app (or here):
 // import "highlight.js/styles/github-dark.css"
@@ -64,7 +65,7 @@ interface MarkdownRendererProps {
   className?: string;
 }
 
-export function MarkdownRenderer({
+export default function MarkdownRenderer({
   content,
   className,
 }: MarkdownRendererProps) {
@@ -103,15 +104,23 @@ export function MarkdownRenderer({
               rel="noopener noreferrer"
             />
           ),
-          img: (props) => (
-            <img
-              {...props}
-              className="rounded-xl shadow my-4 mx-auto"
-              alt={props.alt ?? ""}
-              loading="lazy"
-              decoding="async"
-            />
-          ),
+          img: ({ src, alt, ...props }) => {
+            if (!src || typeof src !== "string") return null;
+
+            const width = props.width ? Number(props.width) : 800;
+            const height = props.height ? Number(props.height) : 500;
+
+            return (
+              <Image
+                src={src}
+                alt={alt ?? ""}
+                width={width}
+                height={height}
+                className="rounded-xl shadow my-4 mx-auto"
+                loading="lazy"
+              />
+            );
+          },
           code: ({ className, children, ...props }) => {
             const isBlock = /language-/.test(className || "");
             if (isBlock) {

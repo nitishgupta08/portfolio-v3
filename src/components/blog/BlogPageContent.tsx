@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import { usePaginatedBlogPosts } from "@/hooks/useBlogPosts";
-import { useEffect } from "react";
 import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogContentSkeleton } from "@/components/blog/BlogContentSkeleton";
 import { BlogErrorState } from "@/components/blog/BlogErrorState";

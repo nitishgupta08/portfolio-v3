@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useExperiences } from "@/hooks/useExperiences";
 import { AlertCircle } from "lucide-react";
 import { useEffect } from "react";
-import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
+import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
 import { ga_tracker } from "@/lib/analytics";
 
 export default function Experience() {

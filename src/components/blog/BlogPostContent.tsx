@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FaArrowLeft, FaClock } from "react-icons/fa";
 import { useBlogPost } from "@/hooks/useBlogPosts";
-import MarkdownRenderer from "./MarkdownRenderer";
+import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
 import ViewCounter from "./ViewCounter";
 import type { BlogPost } from "@/types/BlogPost";
 

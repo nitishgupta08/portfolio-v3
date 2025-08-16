@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ga_tracker } from "@/lib/analytics";
-import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
+import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
 export default function ProjectCard({ project }: { project: Project }) {
   const handleLiveDemoClick = () => {
     if (project.liveLink) {
