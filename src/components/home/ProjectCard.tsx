@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ga_tracker } from "@/lib/analytics";
-
+import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
 export default function ProjectCard({ project }: { project: Project }) {
   const handleLiveDemoClick = () => {
     if (project.liveLink) {
@@ -36,14 +36,12 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="space-y-4">
             <div>
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <Badge variant="secondary" className="text-xs">
-                {project.date}
-              </Badge>
             </div>
 
-            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
-              {project.description}
-            </p>
+            <MarkdownRenderer
+              content={project.description}
+              className="text-muted-foreground text-sm leading-relaxed line-clamp-3"
+            />
 
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag: string, index: number) => (

@@ -1,8 +1,35 @@
 import type { Project } from "@/types/Project";
 
 export const fallbackProjectsData: Project[] = [
+  // Archive Projects (previously in projectsArchive)
   {
-    id: "1",
+    id: "13",
+    title: "ListApp",
+    slug: "listapp",
+    liveLink: null,
+    githubLink: "https://github.com/nitishgupta08/list-app",
+    date: "May 2023",
+    description:
+      "A simple list management application built with TypeScript for task organization and productivity.",
+    tags: ["TypeScript"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "12",
+    title: "MERN Auth",
+    slug: "mern-auth",
+    liveLink: null,
+    githubLink: "https://github.com/nitishgupta08/mern-auth",
+    date: "May 2023",
+    description:
+      "Complete authentication system using MERN stack with JWT tokens, secure password hashing, and user session management.",
+    tags: ["MERN", "Redux", "JWT", "bcryptjs", "cookie-parser"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "11",
     title: "CodeCollab",
     slug: "codecollab",
     liveLink: "https://nkg-cc.netlify.app/",
@@ -15,8 +42,35 @@ export const fallbackProjectsData: Project[] = [
     isFeatured: true,
     isVisible: true,
   },
+
   {
-    id: "2",
+    id: "10",
+    title: "CodeForges",
+    slug: "codeforges",
+    liveLink: "https://codeforges.netlify.app/",
+    githubLink: "https://github.com/nitishgupta08/CodeForges",
+    date: "Jan 2023",
+    description:
+      "Collaborative code editor with real-time synchronization, multiple language support, and team workspace features.",
+    tags: ["ReactJS", "NodeJS", "MongoDB", "MUI", "Codemirror"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "9",
+    title: "Weather App",
+    slug: "weather-app",
+    liveLink: "https://weather-app-dqd4.onrender.com/",
+    githubLink: "https://github.com/nitishgupta08/weather-app",
+    date: "Sept 2022",
+    description:
+      "Weather application with location-based forecasting, real-time weather updates, and responsive design.",
+    tags: ["NodeJS", "Handlebars"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "8",
     title: "algotradersonline",
     slug: "algotradersonline",
     liveLink: null,
@@ -27,6 +81,60 @@ export const fallbackProjectsData: Project[] = [
       "Implemented a wide range of account management, paper trading, and options chain features, as well as a homepage, login/registration screen, dashboard, and options chain. Wrote several APIs to retrieve data from MySQL after processing it for use in strategy execution, options trading, and paper trading.",
     tags: ["ReactJS", "Django", "MySQL", "Python", "Apache"],
     isFeatured: true,
+    isVisible: true,
+  },
+  {
+    id: "7",
+    title: "MQTT Demonstration",
+    slug: "mqtt-demonstration",
+    liveLink: null,
+    githubLink: "https://github.com/nitishgupta08/iotproject",
+    date: "Mar 2022",
+    description:
+      "IoT project demonstrating MQTT protocol implementation with real-time message publishing and subscribing.",
+    tags: ["ReactJS", "MQTT"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "6",
+    title: "Portfolio v1",
+    slug: "portfolio-v1",
+    liveLink: "https://v1-nitishgupta.netlify.app/",
+    githubLink: "https://github.com/nitishgupta08/portfolio",
+    date: "Feb 2022",
+    description:
+      "First version of my personal portfolio website built with React, showcasing my early web development skills.",
+    tags: ["ReactJS"],
+    isFeatured: false,
+    isVisible: true,
+  },
+  {
+    id: "5",
+    title: "Travelling Salesman Problem",
+    slug: "tsp-hill-climbing",
+    liveLink: null,
+    githubLink: "https://github.com/nitishgupta08/travelling-salesman-problem",
+    date: "Oct 2021",
+    description:
+      "Implementation of the Travelling Salesman Problem using Hill Climbing algorithm with visualization and performance analysis.",
+    tags: ["Python", "Hill Climbing"],
+    isFeatured: false,
+    isVisible: true,
+  },
+
+  {
+    id: "4",
+    title: "Terminal Tic-Tac-Toe",
+    slug: "terminal-tictactoe",
+    liveLink: null,
+    githubLink:
+      "https://github.com/nitishgupta08/Algorithms/blob/main/tictactoe.py",
+    date: "Sept 2021",
+    description:
+      "Command-line tic-tac-toe game with AI opponent using minimax algorithm for intelligent gameplay.",
+    tags: ["Python"],
+    isFeatured: false,
     isVisible: true,
   },
   {
@@ -43,115 +151,8 @@ export const fallbackProjectsData: Project[] = [
     isFeatured: true,
     isVisible: true,
   },
-
-  // Archive Projects (previously in projectsArchive)
   {
-    id: "4",
-    title: "ListApp",
-    slug: "listapp",
-    liveLink: null,
-    githubLink: "https://github.com/nitishgupta08/list-app",
-    date: "May 2023",
-    description:
-      "A simple list management application built with TypeScript for task organization and productivity.",
-    tags: ["TypeScript"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "5",
-    title: "MERN Auth",
-    slug: "mern-auth",
-    liveLink: null,
-    githubLink: "https://github.com/nitishgupta08/mern-auth",
-    date: "May 2023",
-    description:
-      "Complete authentication system using MERN stack with JWT tokens, secure password hashing, and user session management.",
-    tags: ["MERN", "Redux", "JWT", "bcryptjs", "cookie-parser"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "6",
-    title: "CodeForges",
-    slug: "codeforges",
-    liveLink: "https://codeforges.netlify.app/",
-    githubLink: "https://github.com/nitishgupta08/CodeForges",
-    date: "Jan 2023",
-    description:
-      "Collaborative code editor with real-time synchronization, multiple language support, and team workspace features.",
-    tags: ["ReactJS", "NodeJS", "MongoDB", "MUI", "Codemirror"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "7",
-    title: "Weather App",
-    slug: "weather-app",
-    liveLink: "https://weather-app-dqd4.onrender.com/",
-    githubLink: "https://github.com/nitishgupta08/weather-app",
-    date: "Sept 2022",
-    description:
-      "Weather application with location-based forecasting, real-time weather updates, and responsive design.",
-    tags: ["NodeJS", "Handlebars"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "8",
-    title: "MQTT Demonstration",
-    slug: "mqtt-demonstration",
-    liveLink: null,
-    githubLink: "https://github.com/nitishgupta08/iotproject",
-    date: "Mar 2022",
-    description:
-      "IoT project demonstrating MQTT protocol implementation with real-time message publishing and subscribing.",
-    tags: ["ReactJS", "MQTT"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "9",
-    title: "Portfolio v1",
-    slug: "portfolio-v1",
-    liveLink: "https://v1-nitishgupta.netlify.app/",
-    githubLink: "https://github.com/nitishgupta08/portfolio",
-    date: "Feb 2022",
-    description:
-      "First version of my personal portfolio website built with React, showcasing my early web development skills.",
-    tags: ["ReactJS"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "10",
-    title: "Travelling Salesman Problem",
-    slug: "tsp-hill-climbing",
-    liveLink: null,
-    githubLink: "https://github.com/nitishgupta08/travelling-salesman-problem",
-    date: "Oct 2021",
-    description:
-      "Implementation of the Travelling Salesman Problem using Hill Climbing algorithm with visualization and performance analysis.",
-    tags: ["Python", "Hill Climbing"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "11",
-    title: "Terminal Tic-Tac-Toe",
-    slug: "terminal-tictactoe",
-    liveLink: null,
-    githubLink:
-      "https://github.com/nitishgupta08/Algorithms/blob/main/tictactoe.py",
-    date: "Sept 2021",
-    description:
-      "Command-line tic-tac-toe game with AI opponent using minimax algorithm for intelligent gameplay.",
-    tags: ["Python"],
-    isFeatured: false,
-    isVisible: true,
-  },
-  {
-    id: "12",
+    id: "2",
     title: "University Management System",
     slug: "university-management-system",
     liveLink: null,
@@ -164,7 +165,7 @@ export const fallbackProjectsData: Project[] = [
     isVisible: true,
   },
   {
-    id: "13",
+    id: "1",
     title: "Bank Management System",
     slug: "bank-management-system",
     liveLink: null,

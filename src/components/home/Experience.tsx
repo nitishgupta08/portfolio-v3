@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useExperiences } from "@/hooks/useExperiences";
 import { AlertCircle } from "lucide-react";
 import { useEffect } from "react";
-
+import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
 import { ga_tracker } from "@/lib/analytics";
 
 export default function Experience() {
@@ -225,9 +225,10 @@ export default function Experience() {
                                   )}
                                 </div>
 
-                                <p className="text-muted-foreground leading-relaxed">
-                                  {item.description}
-                                </p>
+                                <MarkdownRenderer
+                                  content={item.description}
+                                  className="text-muted-foreground leading-relaxed"
+                                />
 
                                 <div className="flex flex-wrap gap-2 pt-2">
                                   {item.tags.map((tag, tagIndex) => (

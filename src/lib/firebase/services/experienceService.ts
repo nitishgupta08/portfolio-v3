@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebase";
 import type { Experience } from "@/types/Experience";
 import { fallbackExperienceData } from "@/lib/data/experienceData";
@@ -16,7 +16,8 @@ export class ExperienceService {
     try {
       const q = query(
         collection(db, COLLECTION_NAME),
-        where("isVisible", "==", true)
+        where("isVisible", "==", true),
+        orderBy("id", "desc")
       );
 
       const querySnapshot = await getDocs(q);

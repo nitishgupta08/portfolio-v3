@@ -1,4 +1,11 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  or,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "@/lib/firebase/firebase";
 import type { Project } from "@/types/Project";
 import { fallbackProjectsData } from "@/lib/data/projectData";
@@ -15,7 +22,8 @@ export class ProjectService {
     try {
       const q = query(
         collection(db, COLLECTION_NAME),
-        where("isVisible", "==", true)
+        where("isVisible", "==", true),
+        orderBy("id", "desc")
       );
       const querySnapshot = await getDocs(q);
 
