@@ -1,39 +1,19 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
+import { Metadata } from "next";
+import { BlogPageContent } from "@/components/blog/BlogPageContent";
 
-export default function GalleryPage() {
-  return (
-    <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
-      <div className="container mx-auto px-4 text-center">
-        <div className="max-w-2xl mx-auto space-y-8">
-          <Badge
-            variant="outline"
-            className="text-sm font-medium uppercase tracking-wider"
-          >
-            Blog
-          </Badge>
+export const metadata: Metadata = {
+  title: "Blog - Nitish Gupta",
+  description:
+    "Read my latest thoughts on web development, technology, and programming.",
+};
 
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Coming Soon
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Still under construction! Stay tuned for updates on my blog.
-            </p>
-          </div>
+interface BlogPageProps {
+  searchParams: Promise<{ page?: string }>;
+}
 
-          <div className="pt-8">
-            <Button asChild variant="outline">
-              <Link href="/">
-                <FaArrowLeft className="mr-2 h-4 w-4" />
-                Back to Home
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams.page) || 1;
+
+  return <BlogPageContent initialPage={currentPage} />;
 }

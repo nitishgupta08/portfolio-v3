@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useExperiences } from "@/hooks/useExperiences";
 import { AlertCircle } from "lucide-react";
 import { useEffect } from "react";
-import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
+import AppMarkdown from "@/components/markdown/AppMarkdown";
 import { ga_tracker } from "@/lib/analytics";
 
 export default function Experience() {
@@ -169,9 +169,10 @@ export default function Experience() {
                                   )}
                                 </div>
 
-                                <p className="my-2 text-sm text-muted-foreground leading-relaxed">
-                                  {item.description}
-                                </p>
+                                <AppMarkdown
+                                  content={item.description}
+                                  className="my-2 text-sm text-muted-foreground leading-relaxed"
+                                />
 
                                 <div className="flex flex-wrap gap-1 pt-2">
                                   {item.tags.map((tag, tagIndex) => (
@@ -225,7 +226,7 @@ export default function Experience() {
                                   )}
                                 </div>
 
-                                <MarkdownRenderer
+                                <AppMarkdown
                                   content={item.description}
                                   className="text-muted-foreground leading-relaxed"
                                 />

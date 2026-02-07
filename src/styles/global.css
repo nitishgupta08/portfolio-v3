@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./blog-markdown.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -121,90 +122,6 @@
   }
 }
 
-/* Image positioning for markdown */
-img[alt*=">"] {
-  float: right;
-  margin-left: 2rem;
-  margin-bottom: 1rem;
-  max-width: 20rem;
-}
-
-img[alt*="<"] {
-  float: left;
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-  max-width: 20rem;
-}
-
-/* Markdown content styling */
-.markdown-content {
-  @apply text-foreground;
-  line-height: 1.7;
-}
-
-/* Image positioning for markdown - use span instead of div */
-.markdown-content img[alt*=">"] {
-  float: right;
-  margin-left: 2rem;
-  margin-bottom: 1rem;
-  max-width: 20rem;
-}
-
-.markdown-content img[alt*="<"] {
-  float: left;
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-  max-width: 20rem;
-}
-
-/* Syntax highlighting improvements */
-.markdown-content pre {
-  @apply bg-gray-900 rounded-lg overflow-x-auto my-6;
-}
-
-.markdown-content code:not(pre code) {
-  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono;
-}
-
-/* Clear floats after floating images */
-.markdown-content::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Better spacing for markdown elements */
-.markdown-content > * + * {
-  margin-top: 1rem;
-}
-
-.markdown-content h1 + *,
-.markdown-content h2 + *,
-.markdown-content h3 + * {
-  margin-top: 0.5rem;
-}
-
-/* Link styling */
-.markdown-content a {
-  @apply text-primary hover:text-primary/80 underline;
-}
-
-/* Table styling */
-.markdown-content table {
-  @apply w-full border-collapse border border-border rounded-lg overflow-hidden my-6;
-}
-
-.markdown-content th,
-.markdown-content td {
-  @apply border border-border px-4 py-2;
-}
-
-.markdown-content th {
-  @apply bg-muted font-semibold;
-}
-
-
-
 /* Add to your global.css or create modal.css */
 @supports (backdrop-filter: blur(20px)) {
   .modal-backdrop {
@@ -224,5 +141,3 @@ img[alt*="<"] {
 .modal-image-container {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-

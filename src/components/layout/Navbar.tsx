@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-// import { cn } from "@/lib/utils";
-// import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-// import { FaRss, FaCamera } from "react-icons/fa";
+import { FaRss } from "react-icons/fa";
 
 export default function Navbar() {
   return (
@@ -26,13 +26,11 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-2">
-          {/* TODO: Add them when they are ready */}
-
-          {/* <Link
+          <Link
             href="/blog"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
-              "hover:text-primary transition-colors"
+              "hover:text-primary transition-colors",
             )}
             aria-label="Blog"
           >
@@ -40,7 +38,7 @@ export default function Navbar() {
             <span className="hidden sm:inline">Blog</span>
           </Link>
 
-          <Link
+          {/*<Link
             href="/gallery"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
@@ -50,7 +48,7 @@ export default function Navbar() {
           >
             <FaCamera className="mr-2 h-4 w-4" />
             <span className="hidden sm:inline">Gallery</span>
-          </Link> */}
+          </Link>*/}
 
           <ThemeToggle />
         </nav>

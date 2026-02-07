@@ -9,6 +9,7 @@ import {
   getDocs,
   increment,
   limit,
+  orderBy,
   query,
   startAfter,
   updateDoc,
@@ -18,6 +19,15 @@ import {
 const COLLECTION_NAME = "blog_posts";
 
 export class BlogService {
+  private static getPublishedFallbackPosts(): BlogPost[] {
+    return fallbackBlogData
+      .filter((post) => post.isPublished !== false && post.isDraft !== true)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+  }
+
   // Get paginated blog posts
   static async getPaginatedBlogPosts(
     page: number,
@@ -26,14 +36,21 @@ export class BlogService {
   ): Promise<PaginatedBlogResult> {
     try {
       if (process.env.NEXT_PUBLIC_USE_FALLBACK_DATA === "true") {
-        console.log("Using fallback data for blog posts");
+        console.log("Using fallback blog data for testing");
+        const publishedPosts = this.getPublishedFallbackPosts();
+        const totalCount = publishedPosts.length;
+        const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
+        const currentPage = Math.min(Math.max(page, 1), totalPages);
+        const startIndex = (currentPage - 1) * pageSize;
+        const posts = publishedPosts.slice(startIndex, startIndex + pageSize);
+
         return {
-          posts: fallbackBlogData,
-          totalCount: 10,
-          hasNextPage: false,
-          hasPrevPage: false,
-          currentPage: 1,
-          totalPages: 1,
+          posts,
+          totalCount,
+          hasNextPage: currentPage < totalPages,
+          hasPrevPage: currentPage > 1,
+          currentPage,
+          totalPages,
           lastDoc: undefined,
         };
       }
@@ -42,6 +59,7 @@ export class BlogService {
       let q = query(
         collection(db, COLLECTION_NAME),
         where("isPublished", "==", true),
+        orderBy("publishedAt", "desc"),
         limit(pageSize)
       );
 
@@ -102,8 +120,11 @@ export class BlogService {
   // Get single blog post by slug
   static async getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
     if (process.env.NEXT_PUBLIC_USE_FALLBACK_DATA === "true") {
-      console.log("Using fallback data for blog post in dev mode");
-      return fallbackBlogData.find((post) => post.slug === slug) || null;
+      console.log("Using fallback blog data for testing");
+      return (
+        this.getPublishedFallbackPosts().find((post) => post.slug === slug) ??
+        null
+      );
     }
 
     try {

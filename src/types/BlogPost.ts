@@ -1,15 +1,15 @@
 export interface BlogPost {
-  id: string;
+  id?: string;
   slug: string;
   title: string;
   description: string;
   content: string;
   coverImage?: string;
   publishedAt: string;
-  views: number;
+  views?: number;
   tags: string[];
-  isPublished: boolean;
-  isDraft: boolean;
+  isPublished?: boolean;
+  isDraft?: boolean;
   readTime?: number;
   createdAt?: string;
   updatedAt?: string;

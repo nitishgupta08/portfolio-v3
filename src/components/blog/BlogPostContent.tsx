@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FaArrowLeft, FaClock } from "react-icons/fa";
 import { useBlogPost } from "@/hooks/useBlogPosts";
-import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
+import AppMarkdown from "@/components/markdown/AppMarkdown";
 import ViewCounter from "./ViewCounter";
 import type { BlogPost } from "@/types/BlogPost";
 
@@ -106,7 +106,7 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
                 <Suspense fallback={<Skeleton className="h-4 w-20" />}>
                   <ViewCounter
                     slug={displayBlog.slug}
-                    initialViews={displayBlog.views}
+                    initialViews={displayBlog.views ?? 0}
                   />
                 </Suspense>
 
@@ -124,7 +124,7 @@ export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
             {isLoading && !displayBlog.content ? (
               <BlogContentSkeleton />
             ) : (
-              <MarkdownRenderer content={displayBlog.content} />
+              <AppMarkdown content={displayBlog.content} />
             )}
           </main>
 

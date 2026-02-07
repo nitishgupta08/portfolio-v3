@@ -3,6 +3,95 @@ import type { BlogPost } from '@/types/BlogPost';
 // Fallback data for development/offline mode
 export const fallbackBlogData: BlogPost[] = [
   {
+    id: "102",
+    slug: "building-markdown-pipeline-nextjs",
+    title: "Building a Secure Markdown Pipeline in Next.js",
+    description:
+      "A practical setup for rendering markdown with syntax highlighting, safe links, and responsive content blocks.",
+    coverImage: "/codecollab.jpg",
+    content: `# Building a Secure Markdown Pipeline in Next.js
+
+When content comes from markdown files, rendering quality and safety need to be solved together.
+
+## What this setup solves
+
+- Safe markdown rendering without raw HTML execution
+- Code blocks and inline code rendering
+- Mobile-friendly tables and images
+- Predictable metadata for blog content
+
+## Example code block
+
+\`\`\`ts
+type BlogPost = {
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  tags: string[];
+};
+\`\`\`
+
+## Example table
+
+| Feature | Why it matters |
+| --- | --- |
+| Sanitization | Reduces XSS risk |
+| Scoped styles | Avoids global CSS conflicts |
+| Responsive wrappers | Better mobile reading |
+
+![Workspace preview](/codecollab.jpg)
+`,
+    publishedAt: "2026-01-15T00:00:00Z",
+    views: 58,
+    tags: ["Next.js", "Markdown", "Security"],
+    isPublished: true,
+    isDraft: false,
+    readTime: 6,
+  },
+  {
+    id: "101",
+    slug: "mobile-friendly-markdown-layouts",
+    title: "Designing Mobile-Friendly Markdown Layouts",
+    description:
+      "How to prevent overflow and preserve readability for code snippets, tables, and media on small screens.",
+    coverImage: "/sorting.png",
+    content: `# Designing Mobile-Friendly Markdown Layouts
+
+Markdown content often breaks first on narrow devices.
+
+## Common issues
+
+1. Long lines in code blocks force page overflow
+2. Wide tables collapse or clip text
+3. Images exceed container width
+
+## Fix strategy
+
+- Wrap tables in a horizontal scroll container
+- Keep code blocks scrollable on the x-axis
+- Force images to max-width 100%
+
+\`\`\`css
+.blog-md pre {
+  overflow-x: auto;
+}
+
+.blog-md-table-wrap {
+  overflow-x: auto;
+}
+\`\`\`
+
+![Sorting visualizer](/sorting.png)
+`,
+    publishedAt: "2026-01-05T00:00:00Z",
+    views: 41,
+    tags: ["CSS", "Responsive Design", "Blog"],
+    isPublished: true,
+    isDraft: false,
+    readTime: 5,
+  },
+  {
     id: "1",
     slug: "getting-started-with-react",
     title: "Getting Started with React - A Comprehensive Guide",

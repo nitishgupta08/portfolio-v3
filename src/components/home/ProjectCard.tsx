@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ga_tracker } from "@/lib/analytics";
-import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
+import AppMarkdown from "@/components/markdown/AppMarkdown";
 export default function ProjectCard({ project }: { project: Project }) {
   const handleLiveDemoClick = () => {
     if (project.liveLink) {
@@ -38,7 +38,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             </div>
 
-            <MarkdownRenderer
+            <AppMarkdown
               content={project.description}
               className="text-muted-foreground text-sm leading-relaxed line-clamp-3"
             />

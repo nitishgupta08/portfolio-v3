@@ -47,7 +47,7 @@ export function BlogListItem({ blog }: BlogListItemProps) {
             </div>
             <div className="flex items-center gap-1">
               <FaEye className="h-3 w-3" />
-              <span>{formatViews(blog.views)} views</span>
+              <span>{formatViews(blog.views ?? 0)} views</span>
             </div>
             {blog.readTime && <span>{blog.readTime} min read</span>}
           </div>
