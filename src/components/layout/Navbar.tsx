@@ -4,50 +4,47 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { FaRss } from "react-icons/fa";
+import { ThemeToggle } from "../ui/theme-toggle";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 w-full z-50 border-b bg-background/90 backdrop-blur">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
+    <header className="fixed top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link
           href="/"
-          className="flex items-center hover:opacity-80 transition-opacity"
+          className="flex items-center transition-opacity hover:opacity-85"
         >
           <Image
             src="/logo.svg"
-            alt="nkg logo"
+            alt="Nitish Kumar Gupta"
             width={120}
             height={32}
             priority
-            className="h-12 w-auto"
+            className="h-10 w-auto"
           />
         </Link>
 
         <nav className="flex items-center gap-2">
+          {/*<Link
+            href="/projects"
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "sm" }),
+              "font-medium",
+            )}
+            aria-label="Projects"
+          >
+            Projects
+          </Link>
+
           <Link
             href="/blog"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
-              "hover:text-primary transition-colors",
+              "font-medium",
             )}
             aria-label="Blog"
           >
-            <FaRss className="mr-2 h-4 w-4" />
-            <span className="hidden sm:inline">Blog</span>
-          </Link>
-
-          {/*<Link
-            href="/gallery"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              "hover:text-primary transition-colors"
-            )}
-            aria-label="Gallery"
-          >
-            <FaCamera className="mr-2 h-4 w-4" />
-            <span className="hidden sm:inline">Gallery</span>
+            Blog
           </Link>*/}
 
           <ThemeToggle />

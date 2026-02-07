@@ -1,168 +1,71 @@
-"use client";
-
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { Metadata } from "next";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { FaArrowLeft } from "react-icons/fa";
-import { AlertCircle } from "lucide-react";
-import { useProjects } from "@/hooks/useProjects";
-import { useEffect } from "react";
-import { ga_tracker } from "@/lib/analytics";
+import { Empty } from "@/components/ui/empty";
+import { getProjects } from "@/lib/server/portfolioData";
 import ProjectCard from "@/components/home/ProjectCard";
-import ProjectCardSkeleton from "@/components/home/ProjectCardSkeleton";
 
-export default function ProjectsPage() {
-  const { data: projects, isLoading, error, isFetching } = useProjects();
+export const metadata: Metadata = {
+  title: "Projects - Nitish Gupta",
+  description: "A full collection of featured and production projects.",
+};
 
-  // Track errors when they occur
-  useEffect(() => {
-    if (error) {
-      ga_tracker.trackError(error, "Failed to fetch projects data");
-    }
-  }, [error]);
+export default async function ProjectsPage() {
+  const projects = await getProjects();
 
-  const allProjects = projects || [];
-  const featuredProjects = allProjects.filter(
-    (project) => project.isFeatured && project.isVisible
-  );
-  const otherProjects = allProjects.filter(
-    (project) => !project.isFeatured && project.isVisible
-  );
+  const featuredProjects = projects.filter((project) => project.isFeatured);
+  const otherProjects = projects.filter((project) => !project.isFeatured);
 
   return (
-    <div className="min-h-screen pt-24 pb-12">
+    <div className="min-h-screen pb-14 pt-24">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <Button
-              variant="ghost"
-              size="sm"
-              asChild
-              className="mb-6 hover:bg-primary/10"
-            >
-              <Link href="/">
-                <FaArrowLeft className="mr-2 h-4 w-4" />
-                Back to Home
-              </Link>
-            </Button>
+        <div className="mx-auto max-w-6xl">
+          <Button variant="ghost" size="sm" asChild className="mb-8">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
 
-            <div className="text-center">
-              <Badge
-                variant="outline"
-                className="mb-4 uppercase tracking-wider"
-              >
-                All Projects
-                {isFetching && !isLoading && (
-                  <span className="ml-1 text-xs opacity-60">(updating...)</span>
-                )}
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Complete Project Collection
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A comprehensive showcase of all the projects I&rsquo;ve built.
-              </p>
-            </div>
-          </div>
+          <header className="py-6">
+            <p className="editorial-kicker">Projects</p>
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
+              Complete Project Collection
+            </h1>
+            <p className="mt-3 max-w-2xl text-muted-foreground">
+              Featured launches and supporting implementations in one place.
+            </p>
+          </header>
 
-          {/* Loading State */}
-          {isLoading && (
-            <div className="space-y-16">
-              {/* Featured Projects Loading */}
-              <div>
-                <Skeleton className="h-8 w-48 mb-8" />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[1, 2, 3].map((i) => (
-                    <ProjectCardSkeleton key={i} />
-                  ))}
-                </div>
+          {featuredProjects.length > 0 && (
+            <section className="py-10">
+              <h2 className="text-2xl font-semibold">Featured</h2>
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {featuredProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
               </div>
-
-              {/* All Projects Loading */}
-              <div>
-                <Skeleton className="h-8 w-40 mb-8" />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <ProjectCardSkeleton key={i} />
-                  ))}
-                </div>
-              </div>
-            </div>
+            </section>
           )}
 
-          {/* Error State */}
-          {error && !isLoading && (
-            <div className="flex flex-col items-center justify-center py-16 px-6">
-              <div className="relative mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/30 rounded-full flex items-center justify-center border border-red-200 dark:border-red-800/50">
-                  <AlertCircle className="w-12 h-12 text-red-500 dark:text-red-400" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full animate-pulse"></div>
+          {otherProjects.length > 0 && (
+            <section className="py-10">
+              <h2 className="text-2xl font-semibold">All Projects</h2>
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {otherProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
               </div>
-
-              <div className="text-center space-y-4 max-w-md">
-                <h3 className="text-xl md:text-2xl font-bold text-foreground">
-                  Oops! Something went wrong
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  Unable to load my projects right now. This has been
-                  automatically reported and I&rsquo;ll look into it.
-                </p>
-
-                <div className="mt-8 text-center">
-                  <button
-                    onClick={() => window.location.reload()}
-                    className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              </div>
-            </div>
+            </section>
           )}
 
-          {/* Projects Content */}
-          {!isLoading && !error && (
-            <>
-              {featuredProjects.length > 0 && (
-                <div className="mb-16">
-                  <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {featuredProjects.map((project) => (
-                      <ProjectCard key={project.id} project={project} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {otherProjects.length > 0 && (
-                <div>
-                  <h2 className="text-2xl font-bold mb-8">All Projects</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {otherProjects.map((project) => (
-                      <ProjectCard key={project.id} project={project} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* No Projects State */}
-              {allProjects.length === 0 && (
-                <div className="text-center py-16">
-                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                    <AlertCircle className="w-8 h-8 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">
-                    No projects to show
-                  </h3>
-                  <p className="text-muted-foreground">
-                    There are currently no projects to display.
-                  </p>
-                </div>
-              )}
-            </>
+          {projects.length === 0 && (
+            <Empty
+              className="mt-12"
+              title="No projects are available"
+              description="This page will be updated as new work is published."
+            />
           )}
         </div>
       </div>

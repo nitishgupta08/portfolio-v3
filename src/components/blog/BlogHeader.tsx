@@ -1,6 +1,5 @@
-// components/BlogHeader.tsx
 import { Skeleton } from "@/components/ui/skeleton";
-import { Separator } from "@/components/ui/separator";
+import { Spinner } from "@/components/ui/spinner";
 
 interface BlogHeaderProps {
   totalPosts: number;
@@ -16,31 +15,24 @@ export function BlogHeader({
   isLoading,
 }: BlogHeaderProps) {
   return (
-    <div className="text-center mb-16">
+    <div className="mb-12">
       <div className="space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          Blog
-          {isFetching && !isLoading && (
-            <span className="ml-2 text-sm text-muted-foreground">
-              (updating...)
-            </span>
-          )}
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Thoughts on web development, technology trends, and programming best
-          practices
+        <div className="flex items-center gap-3">
+          <h1 className="text-4xl font-semibold md:text-5xl">Blog</h1>
+          {isFetching && !isLoading ? <Spinner className="size-4" /> : null}
+        </div>
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          Notes on software, ideas, and maybe rant.
         </p>
 
-        {/* Posts count with skeleton during loading */}
         {isLoading ? (
-          <Skeleton className="h-4 w-48 mx-auto" />
+          <Skeleton className="h-4 w-48" />
         ) : (
           <div className="text-sm text-muted-foreground">
             {totalPosts} {totalPosts === 1 ? "post" : "posts"}
           </div>
         )}
       </div>
-      <Separator className="mt-8 max-w-md mx-auto" />
     </div>
   );
 }

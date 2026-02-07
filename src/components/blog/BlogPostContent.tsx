@@ -19,7 +19,7 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ slug, initialBlog }: BlogPostContentProps) {
-  const { data: blog, isLoading, error } = useBlogPost(slug);
+  const { data: blog, isLoading, error } = useBlogPost(slug, initialBlog);
 
   // Use cached data or fall back to initial/server data
   const displayBlog = blog || initialBlog;

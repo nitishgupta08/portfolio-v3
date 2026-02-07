@@ -1,5 +1,4 @@
 import { BlogPost } from "@/types/BlogPost";
-import { QueryDocumentSnapshot } from "firebase/firestore";
 
 export interface PaginatedBlogResult {
   posts: BlogPost[];
@@ -8,5 +7,4 @@ export interface PaginatedBlogResult {
   hasPrevPage: boolean;
   currentPage: number;
   totalPages: number;
-  lastDoc?: QueryDocumentSnapshot;
 }

@@ -1,50 +1,35 @@
-"use client";
-
-// import Link from "next/link";
-// import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { ArrowRight, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-16 [mask-image:radial-gradient(ellipse_at_center,black,transparent)]" />
+    <section className="section-shell pt-20 md:pt-24">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl py-14 md:py-20">
+          <p className="editorial-kicker">Well, hello there! I'm</p>
+          <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-6xl md:text-7xl">
+            Nitish Kumar Gupta
+          </h1>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            and I'm more than just a software engineer.
+          </p>
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
-        <div className="flex flex-col items-center text-center space-y-8">
-          <Badge variant="outline">✨ Welcome to my digital space</Badge>
-
-          <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-              Hey there! <span className="inline-block">👋</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl leading-relaxed">
-              I&rsquo;m{" "}
-              <span className="text-primary font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text">
-                Nitish Kumar Gupta
-              </span>
-              , a software engineer turning complex problems into simple,
-              elegant solutions that just work.{" "}
-              <span className="inline-block">🧑‍💻</span>
-            </p>
-          </div>
-
-          {/* Add them when they are ready */}
-
-          {/* <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="min-w-[140px]"
-            >
-              <Link href="/blog">Read Blog</Link>
+          <ButtonGroup className="mt-10">
+            <Button asChild size="lg" className="min-w-40">
+              <Link href="/projects">
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
-
-            <Button asChild size="lg" className="min-w-[140px]">
-              <Link href="/gallery">View Gallery</Link>
+            <Button asChild size="lg" variant="outline" className="min-w-40">
+              <Link href="/blog">
+                Read Blog
+                <FileText className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
-          </div> */}
+          </ButtonGroup>
         </div>
       </div>
     </section>

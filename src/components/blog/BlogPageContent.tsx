@@ -11,26 +11,30 @@ import { BlogPostsList } from "@/components/blog/BlogPostsList";
 import { BlogPagination } from "@/components/blog/BlogPagination";
 import { PostsSummary } from "@/components/blog/PostsSummary";
 import EmptyBlogState from "./EmptyBlogState";
+import type { PaginatedBlogResult } from "@/types/PaginatedBlogResult";
 
 const POSTS_PER_PAGE = 6;
 
 interface BlogPageContentProps {
   initialPage: number;
+  initialResult: PaginatedBlogResult;
 }
 
-export function BlogPageContent({ initialPage }: BlogPageContentProps) {
+export function BlogPageContent({
+  initialPage,
+  initialResult,
+}: BlogPageContentProps) {
   const {
     data: blogResult,
     isLoading,
     error,
     isFetching,
-  } = usePaginatedBlogPosts(initialPage, POSTS_PER_PAGE);
+  } = usePaginatedBlogPosts(initialPage, POSTS_PER_PAGE, initialResult);
 
   return (
     <div className="min-h-screen pt-24 pb-12">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Back to Home Button */}
           <div className="mb-8">
             <Button
               variant="ghost"
@@ -45,7 +49,6 @@ export function BlogPageContent({ initialPage }: BlogPageContentProps) {
             </Button>
           </div>
 
-          {/* Page Header */}
           <BlogHeader
             totalPosts={blogResult?.totalCount || 0}
             currentPage={blogResult?.currentPage || initialPage}
@@ -54,18 +57,13 @@ export function BlogPageContent({ initialPage }: BlogPageContentProps) {
             isLoading={isLoading}
           />
 
-          {/* Loading State */}
           {isLoading && <BlogContentSkeleton />}
-
-          {/* Error State */}
           {error && !isLoading && <BlogErrorState />}
 
-          {/* Blog Posts Content */}
           {!isLoading && !error && (
             <>
               <BlogPostsList posts={blogResult?.posts || []} />
 
-              {/* Pagination - Show when we have multiple pages */}
               {(blogResult?.totalPages || 0) > 1 && (
                 <BlogPagination
                   currentPage={blogResult?.currentPage || initialPage}
@@ -75,16 +73,16 @@ export function BlogPageContent({ initialPage }: BlogPageContentProps) {
                 />
               )}
 
-              {/* Posts summary */}
-              <PostsSummary
-                currentPage={blogResult?.currentPage || initialPage}
-                totalPosts={blogResult?.totalCount || 0}
-                postsPerPage={POSTS_PER_PAGE}
-              />
+              {(blogResult?.totalCount || 0) > 0 && (
+                <PostsSummary
+                  currentPage={blogResult?.currentPage || initialPage}
+                  totalPosts={blogResult?.totalCount || 0}
+                  postsPerPage={POSTS_PER_PAGE}
+                />
+              )}
             </>
           )}
 
-          {/* Empty State */}
           {!isLoading && !error && (blogResult?.posts || []).length === 0 && (
             <EmptyBlogState />
           )}

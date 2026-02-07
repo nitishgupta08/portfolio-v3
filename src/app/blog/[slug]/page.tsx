@@ -1,17 +1,20 @@
+import { cache } from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostContent } from "@/components/blog/BlogPostContent";
-import { BlogService } from "@/lib/firebase/services/blogService";
+import { getBlogPost } from "@/lib/server/portfolioData";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const getCachedBlogPost = cache(async (slug: string) => getBlogPost(slug));
+
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const blog = await BlogService.getBlogPostBySlug(slug);
+  const blog = await getCachedBlogPost(slug);
 
   if (!blog) {
     return {
@@ -32,7 +35,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const blog = await BlogService.getBlogPostBySlug(slug);
+  const blog = await getCachedBlogPost(slug);
 
   if (!blog) {
     notFound();

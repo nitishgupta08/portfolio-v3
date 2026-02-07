@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { BlogPageContent } from "@/components/blog/BlogPageContent";
+import { getBlogPage } from "@/lib/server/portfolioData";
 
 export const metadata: Metadata = {
   title: "Blog - Nitish Gupta",
@@ -11,9 +12,18 @@ interface BlogPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
+const POSTS_PER_PAGE = 6;
+
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = Number(resolvedSearchParams.page) || 1;
+  const parsedPage = Number(resolvedSearchParams.page);
+  const currentPage =
+    Number.isFinite(parsedPage) && parsedPage > 0 ? Math.floor(parsedPage) : 1;
 
-  return <BlogPageContent initialPage={currentPage} />;
+  const initialResult = await getBlogPage({
+    page: currentPage,
+    pageSize: POSTS_PER_PAGE,
+  });
+
+  return <BlogPageContent initialPage={currentPage} initialResult={initialResult} />;
 }
