@@ -6,7 +6,6 @@ import Footer from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import RouteTracker from "@/components/analytics/RouteTracker";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeSeedScript from "@/components/theme/ThemeSeedScript";
 import "@/styles/global.css";
 
@@ -44,7 +43,6 @@ export default function RootLayout({
             <Footer />
           </ThemeProvider>
         </QueryProvider>
-        <SpeedInsights />
       </body>
     </html>
   );

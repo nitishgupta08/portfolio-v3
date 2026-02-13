@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   previousVersions: [
     {
       version: "2.0.0",
-      url: "https://nitishgupta.netlify.app/",
+      url: "https://v2-nitishgupta.netlify.app/",
       label: "v2",
     },
     {

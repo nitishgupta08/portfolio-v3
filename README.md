@@ -1,47 +1,36 @@
-# Portfolio v3
+# Portfolio
 
-A personal portfolio built with Next.js App Router, Tailwind CSS v4, shadcn/ui, Firebase Firestore, and React Query.
+Personal portfolio application built with Next.js App Router, TypeScript, Firebase Firestore, and TanStack React Query. The app includes a content-driven home page, projects archive, blog system
+
+## Features
+
+- Homepage with hero, about, experience, projects, and contact sections.
+- Blog listing page and individual blog post pages.
+- Dedicated projects page with featured and archived project data.
+- Firestore-backed content with local fallback mode via environment flag.
 
 ## Tech Stack
 
-- Next.js 15 (App Router)
-- React 19 + TypeScript
-- Tailwind CSS v4 + shadcn/ui
-- Firebase Firestore
+- Next.js 16.1.6 (App Router)
+- React 19.2.4 + TypeScript
+- Tailwind CSS v4 + shadcn/ui + Radix UI
+- Firebase (Firestore, Storage, Firebase Admin SDK dependency present)
 - TanStack React Query
-- Google Analytics + Vercel Speed Insights
+- Google Analytics
 
 ## Prerequisites
 
 - Node.js 20+
 - npm
-- Firebase project with Firestore collections:
-  - `projects`
-  - `experiences`
-  - `blog_posts`
+- Firebase project configured for Firestore (and Storage if media is used)
 
 ## Environment Variables
 
-Copy `.env.example` to `.env.local` and provide values:
+Create a local env file:
 
 ```bash
 cp .env.example .env.local
 ```
-
-Required variables:
-
-- `NEXT_PUBLIC_FIREBASE_API_KEY`
-- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
-- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
-- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
-- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
-- `NEXT_PUBLIC_FIREBASE_APP_ID`
-
-Optional variables:
-
-- `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-- `NEXT_PUBLIC_SITE_URL`
-- `NEXT_PUBLIC_USE_FALLBACK_DATA=true` to serve local fallback data instead of Firestore
 
 ## Local Development
 
@@ -50,27 +39,21 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-## Quality Checks
-
-```bash
-npm run lint
-npx tsc --noEmit
-npm run build
-```
-
-Note: `npm run build` may fail in network-restricted environments if external assets are blocked.
-
-## Data Loading Strategy
-
-- Server data interfaces live in `src/lib/server/portfolioData.ts`.
-- Home, blog listing, blog post, and projects pages consume server-fetched data first.
-- Client interactivity (carousel, counters, analytics events) stays in client components.
+Open `http://localhost:3000`.
 
 ## Scripts
 
-- `npm run dev` - start dev server
-- `npm run build` - production build
-- `npm run start` - run production server
-- `npm run lint` - run ESLint
+- `npm run dev` starts the Next.js dev server with Turbopack.
+- `npm run build` creates a production build.
+- `npm run start` runs the production server.
+- `npm run lint` runs ESLint against `src`.
+
+## Deployment Notes
+
+- This is a standard Next.js application and can be deployed on Netlify.
+- Ensure all required environment variables in deployment match the local `.env.local` values.
+- Keep `NEXT_PUBLIC_USE_FALLBACK_DATA` disabled in production unless you intentionally want static fallback content.
+
+## License
+
+No license specified.
