@@ -4,20 +4,9 @@ import Image from "next/image";
 import type { Project } from "@/types/Project";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { ga_tracker } from "@/lib/analytics";
 import AppMarkdown from "@/components/markdown/AppMarkdown";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const handleLiveDemoClick = () => {
-    if (project.liveLink) {
-      ga_tracker.trackExternalLink(project.liveLink, "live_demo");
-    }
-  };
-
-  const handleGithubClick = () => {
-    ga_tracker.trackExternalLink(project.githubLink, "github");
-  };
-
   return (
     <article className="h-full rounded-[calc(var(--radius)+2px)] border border-border/80 bg-card">
       {project.imgSrc && (
@@ -58,7 +47,6 @@ export default function ProjectCard({ project }: { project: Project }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} source code`}
-              onClick={handleGithubClick}
             >
               <FaGithub className="mr-2 h-4 w-4" />
               Code
@@ -72,7 +60,6 @@ export default function ProjectCard({ project }: { project: Project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View ${project.title} live demo`}
-                onClick={handleLiveDemoClick}
               >
                 <FaExternalLinkAlt className="mr-2 h-4 w-4" />
                 Live

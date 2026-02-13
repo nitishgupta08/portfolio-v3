@@ -3,9 +3,6 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { GA_MEASUREMENT_ID } from "@/lib/analytics";
-import RouteTracker from "@/components/analytics/RouteTracker";
 import ThemeSeedScript from "@/components/theme/ThemeSeedScript";
 import "@/styles/global.css";
 
@@ -29,7 +26,6 @@ export default function RootLayout({
         <ThemeSeedScript />
       </head>
       <body className="font-sans antialiased">
-        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
         <QueryProvider>
           <ThemeProvider
             attribute="class"
@@ -37,7 +33,6 @@ export default function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
           >
-            <RouteTracker />
             <Navbar />
             <main className="pt-16">{children}</main>
             <Footer />

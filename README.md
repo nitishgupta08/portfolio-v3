@@ -16,7 +16,6 @@ Personal portfolio application built with Next.js App Router, TypeScript, Fireba
 - Tailwind CSS v4 + shadcn/ui + Radix UI
 - Firebase (Firestore, Storage, Firebase Admin SDK dependency present)
 - TanStack React Query
-- Google Analytics
 
 ## Prerequisites
 

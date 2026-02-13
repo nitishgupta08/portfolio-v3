@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { ga_tracker } from "@/lib/analytics";
 import { SITE_CONFIG, getGitHubReleaseUrl } from "@/lib/config";
 
 export default function Footer() {
@@ -82,7 +81,6 @@ function Socials() {
             rel="noopener noreferrer"
             aria-label={social.name}
             title={social.name}
-            onClick={() => ga_tracker.trackExternalLink(social.url, "social")}
             className="rounded-[calc(var(--radius)-2px)] border border-border/70 p-2.5 text-muted-foreground transition-colors hover:text-foreground"
           >
             <IconComponent className="h-4 w-4" />
